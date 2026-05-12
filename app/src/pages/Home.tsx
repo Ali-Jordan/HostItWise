@@ -5,6 +5,7 @@ import { ScrollReveal } from '@/components/ScrollReveal';
 import { StaggerContainer, StaggerItem } from '@/components/Stagger';
 import { SectionHeader } from '@/components/SectionHeader';
 
+import { ContactSection } from '../components/ContactSection';
 const problemCards = [
   { icon: Monitor, title: 'Outdated website', desc: 'Your site looks old and doesn\'t convert visitors.' },
   { icon: PhoneOff, title: 'Missed calls', desc: 'Every missed call is a lost customer you never knew about.' },
@@ -387,6 +388,7 @@ export default function Home() {
           </ScrollReveal>
         </div>
       </section>
+      <ContactSection />
     </div>
   );
 }

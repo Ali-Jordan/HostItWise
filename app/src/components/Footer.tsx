@@ -69,8 +69,8 @@ export function Footer() {
           {/* Contact Column */}
           <div>
             <h4 className="text-base font-semibold mb-4">Contact</h4>
-            <p className="text-sm text-white/50 mb-2">hello@hostitwise.com</p>
-            <p className="text-sm text-white/50 mb-4">(555) 123-4567</p>
+            <a href="mailto:admin@hostitwise.com" className="block text-sm text-white/50 mb-2 hover:text-white transition-colors">admin@hostitwise.com</a>
+            <a href="tel:+17089706113" className="block text-sm text-white/50 mb-4 hover:text-white transition-colors">(708) 970-6113</a>
             <Link
               to="/contact"
               className="inline-flex items-center justify-center px-5 py-2.5 bg-teal text-white text-sm font-semibold rounded-button hover:bg-teal-hover transition-colors"
