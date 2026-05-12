@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 192 35% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 192 35% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 192 35% 9%;
+    --primary: 180 61% 43%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 180 33% 97%;
+    --secondary-foreground: 192 35% 9%;
+    --muted: 180 33% 97%;
+    --muted-foreground: 186 8% 39%;
+    --accent: 180 33% 97%;
+    --accent-foreground: 192 35% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 180 22% 89%;
+    --input: 180 22% 89%;
+    --ring: 180 61% 43%;
+    --radius: 0.625rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-primary-text font-inter antialiased;
+  }
+
+  * {
+    @apply border-borders;
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply max-w-[1200px] mx-auto px-6;
+  }
+}
