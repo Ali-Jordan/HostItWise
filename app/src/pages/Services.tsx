@@ -1,154 +1,267 @@
 import { Link } from 'react-router-dom';
-import { StaggerContainer, StaggerItem } from '@/components/Stagger';
-import { SectionHeader } from '@/components/SectionHeader';
+import {
+  Monitor,
+  Server,
+  PhoneIncoming,
+  Star,
+  MapPin,
+  TrendingUp,
+  MessageSquare,
+  Camera,
+  Check,
+} from 'lucide-react';
 
+// ── PACKAGES ────────────────────────────────────────────────────────────────
+const packages = [
+  {
+    name: 'Website Launch',
+    price: '$250–750',
+    priceSuffix: 'one-time',
+    tagline: 'One-time site build',
+    popular: false,
+    features: ['Custom design', 'Mobile-first build', 'SEO foundation', 'You own the code'],
+  },
+  {
+    name: 'Starter',
+    price: '$199',
+    priceSuffix: '/mo',
+    tagline: 'Stop the bleed',
+    popular: false,
+    features: ['Lead recovery', 'Review growth', 'Monthly reporting'],
+  },
+  {
+    name: 'Growth',
+    price: '$499',
+    priceSuffix: '/mo',
+    tagline: 'Build a real engine',
+    popular: true,
+    features: ['Hosting + maintenance', 'Lead recovery', 'Reputation growth', 'Local visibility'],
+  },
+  {
+    name: 'Demand',
+    price: '$999',
+    priceSuffix: '/mo + ad spend',
+    tagline: 'Pour gasoline on it',
+    popular: false,
+    features: ['Google Ads management', 'Landing pages', 'Call tracking', 'Weekly optimization'],
+  },
+];
+
+// ── A LA CARTE SERVICES ────────────────────────────────────────────────────
 const services = [
   {
-    num: '01',
+    number: '01',
+    icon: Monitor,
     name: 'Website Launch',
     price: '$250–750 one-time',
-    img: '/images/service-website.png',
-    problem: 'Your website looks outdated, loads slowly, or doesn\'t work on mobile. Visitors leave before they ever contact you.',
-    includes: ['Mobile-responsive design', 'Contact forms that convert', 'Fast loading speeds', 'Basic SEO setup', 'Professional copy'],
-    for: 'Businesses with no website or a site older than 3 years.',
+    description:
+      'A fast, modern, conversion-focused site built in 7–14 days. Mobile-first, SEO-ready, hosted on Vercel. You own the code.',
   },
   {
-    num: '02',
+    number: '02',
+    icon: Server,
     name: 'Hosting + Maintenance',
     price: '$49–99/mo',
-    img: '/images/service-hosting.png',
-    problem: 'Your site goes down, updates break things, and you have no one to call when it happens.',
-    includes: ['99.9% uptime hosting', 'Monthly updates & backups', 'Security monitoring', 'SSL certificate', 'Priority support'],
-    for: 'Businesses that need their website to just work, 24/7.',
+    description:
+      'Fast hosting, monthly security updates, weekly backups, and content edits when you need them. Your site stays fast, current, and online.',
   },
   {
-    num: '03',
+    number: '03',
+    icon: PhoneIncoming,
     name: 'Lead Recovery System',
     price: '$49–149/mo',
-    img: '/images/service-lead.png',
-    problem: 'Missed calls, unreturned voicemails, and form submissions that never get followed up.',
-    includes: ['Missed call text-back', 'Form submission alerts', 'Voicemail transcription', 'Lead tracking dashboard', 'Weekly lead reports'],
-    for: 'Businesses that miss calls during busy hours or after closing.',
+    description:
+      'Capture missed calls, texts, and abandoned form submissions. Automated follow-ups so cold leads warm back up before they call a competitor.',
   },
   {
-    num: '04',
+    number: '04',
+    icon: Star,
     name: 'Reputation Growth',
     price: '$49–149/mo',
-    img: '/images/service-reputation.png',
-    problem: 'You have few reviews, mixed ratings, or no system to collect feedback from happy customers.',
-    includes: ['Review request automation', 'Multi-platform monitoring', 'Response templates', 'Rating trend reports', 'Negative review alerts'],
-    for: 'Businesses that know reviews matter but have no process to get them.',
+    description:
+      'Automated review requests after every job. Build a 4.8+ star Google profile that wins clicks before your competitors even get a chance.',
   },
   {
-    num: '05',
+    number: '05',
+    icon: MapPin,
     name: 'Local Visibility Engine',
     price: '$250–500/mo',
-    img: '/images/service-visibility.png',
-    problem: 'Your business doesn\'t show up on Google Maps or local searches — your competitors do.',
-    includes: ['Google Business Profile optimization', 'Local citation building', 'Local SEO content', 'Map ranking tracking', 'Competitor visibility reports'],
-    for: 'Businesses that depend on local customers finding them online.',
+    description:
+      'Google Business Profile optimization plus local SEO. Show up when neighbors search "[service] near me" instead of your competitor down the street.',
   },
   {
-    num: '06',
+    number: '06',
+    icon: TrendingUp,
     name: 'Google Ads Lead Engine',
     price: '$300–750/mo + ad spend',
-    img: '/images/service-ads.png',
-    problem: 'You\'ve tried ads before and burned budget with nothing to show. Or you\'ve never run them and don\'t know where to start.',
-    includes: ['Campaign setup & management', 'Landing page optimization', 'Conversion tracking', 'A/B testing', 'Monthly performance reports'],
-    for: 'Businesses ready to invest in paid lead generation with proper tracking.',
+    description:
+      'Conversion-tracked Google Ads with dedicated landing pages, call tracking, and weekly optimization. Pay for clicks that turn into booked jobs.',
   },
   {
-    num: '07',
+    number: '07',
+    icon: MessageSquare,
     name: 'Follow-Up Engine',
     price: '$99–299/mo',
-    img: '/images/service-followup.png',
-    problem: 'Leads come in but go cold because follow-up is inconsistent or too slow.',
-    includes: ['Automated email sequences', 'SMS follow-up campaigns', 'Appointment reminders', 'Lead nurturing workflows', 'CRM integration'],
-    for: 'Businesses with leads that aren\'t converting into appointments.',
+    description:
+      'Email and SMS sequences that re-engage past customers and book repeat work. The cheapest lead is the one who already paid you once.',
   },
   {
-    num: '08',
+    number: '08',
+    icon: Camera,
     name: 'Content Day',
     price: '$300–800 one-time',
-    img: '/images/service-content.png',
-    problem: 'Your website and social media have no fresh content. You look inactive online.',
-    includes: ['Professional photography', 'Service page content', 'Social media assets', 'Before/after documentation', 'Content calendar'],
-    for: 'Businesses that need fresh visual content for their digital presence.',
+    description:
+      'One full content day with VideoZak. Photos, video b-roll, headshots, team shots — everything you need to keep your site and socials fed for a year.',
   },
 ];
 
 export default function Services() {
   return (
-    <div>
-      {/* Header */}
-      <section className="bg-soft-section py-20 md:py-24">
+    <div className="bg-white">
+      {/* ── Hero ─────────────────────────────────────────────────────── */}
+      <section className="pt-32 pb-12">
         <div className="container-site">
-          <SectionHeader
-            eyebrow="Services"
-            headline="Fix the leak. Grow the business."
-            subtext="Every service solves a specific problem in your lead system."
-            centered={false}
-          />
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="text-teal text-sm font-semibold tracking-wider uppercase mb-3">
+              Solutions
+            </p>
+            <h1 className="text-5xl sm:text-6xl font-bold text-gunmetal mb-6 leading-tight">
+              Pick a package. Or build your own.
+            </h1>
+            <p className="text-gunmetal/70 text-lg sm:text-xl">
+              Every package is a mix of our services. Start where you are — add what you need as you grow.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Service Detail Cards */}
-      <section className="bg-white py-16 md:py-20">
-        <div className="container-site space-y-6">
-          <StaggerContainer stagger={0.1}>
-            {services.map((service) => (
-              <StaggerItem key={service.num}>
-                <div className="bg-white rounded-card p-8 md:p-10 shadow-card hover:shadow-card-hover transition-all duration-300">
-                  <div className="flex flex-col md:flex-row gap-8">
-                    <div className="flex-1">
-                      <p className="text-xs font-medium text-muted-text mb-2">{service.num}</p>
-                      <h3 className="text-2xl font-bold text-gunmetal mb-2">{service.name}</h3>
-                      <p className="text-2xl font-bold text-teal tracking-tight">{service.price}</p>
+      {/* ── Packages ─────────────────────────────────────────────────── */}
+      <section id="packages" className="py-12">
+        <div className="container-site">
+          <div className="max-w-2xl mx-auto text-center mb-12">
+            <p className="text-teal text-sm font-semibold tracking-wider uppercase mb-3">
+              Packages
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gunmetal mb-3">
+              A plan for every stage of growth.
+            </h2>
+            <p className="text-gunmetal/70">
+              Start small or go all-in. Every package bundles the services that work together.
+            </p>
+          </div>
 
-                      <div className="border-t border-borders my-6" />
-
-                      <div className="space-y-6">
-                        <div>
-                          <h4 className="text-base font-semibold text-gunmetal mb-2">Problem Solved</h4>
-                          <p className="text-sm text-secondary-text" style={{ lineHeight: 1.6 }}>{service.problem}</p>
-                        </div>
-
-                        <div>
-                          <h4 className="text-base font-semibold text-gunmetal mb-2">What's Included</h4>
-                          <ul className="space-y-2">
-                            {service.includes.map((item) => (
-                              <li key={item} className="flex items-start gap-3 text-sm text-secondary-text">
-                                <span className="w-1.5 h-1.5 rounded-full bg-teal mt-1.5 flex-shrink-0" />
-                                {item}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        <div>
-                          <h4 className="text-base font-semibold text-gunmetal mb-2">Who It's For</h4>
-                          <p className="text-sm text-secondary-text" style={{ lineHeight: 1.6 }}>{service.for}</p>
-                        </div>
-
-                        <Link
-                          to="/contact"
-                          className="inline-flex items-center justify-center px-6 py-3 border border-teal text-teal text-sm font-semibold rounded-button hover:bg-teal hover:text-white transition-all duration-200"
-                        >
-                          Get This Service
-                        </Link>
-                      </div>
-                    </div>
-
-                    <div className="md:w-[280px] flex-shrink-0">
-                      <div className="bg-teal-light rounded-card p-6 flex items-center justify-center h-full min-h-[200px]">
-                        <img src={service.img} alt={service.name} className="w-32 h-32 object-contain" />
-                      </div>
-                    </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            {packages.map((pkg) => (
+              <div
+                key={pkg.name}
+                className={
+                  'relative bg-white p-6 rounded-2xl flex flex-col ' +
+                  (pkg.popular
+                    ? 'border-2 border-teal shadow-lg lg:scale-105'
+                    : 'border border-gunmetal/10 hover:border-gunmetal/30 transition-colors')
+                }
+              >
+                {pkg.popular && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-teal text-white text-xs font-semibold rounded-full whitespace-nowrap">
+                    Most Popular
                   </div>
-                </div>
-              </StaggerItem>
+                )}
+                <h3 className="text-xl font-bold text-gunmetal mb-1">{pkg.name}</h3>
+                <p className="text-sm text-gunmetal/60 mb-4">{pkg.tagline}</p>
+                <p className="mb-6">
+                  <span className="text-3xl font-bold text-gunmetal">{pkg.price}</span>
+                  <span className="text-sm text-gunmetal/60 ml-1">{pkg.priceSuffix}</span>
+                </p>
+                <ul className="space-y-2.5 mb-6 flex-grow">
+                  {pkg.features.map((feat) => (
+                    <li key={feat} className="flex items-start gap-2 text-sm text-gunmetal/80">
+                      <Check className="w-4 h-4 text-teal flex-shrink-0 mt-0.5" />
+                      <span>{feat}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  to="/contact"
+                  className={
+                    'block w-full text-center py-2.5 rounded-button font-semibold text-sm transition-all duration-200 hover:-translate-y-0.5 ' +
+                    (pkg.popular
+                      ? 'bg-teal text-white hover:bg-teal-hover'
+                      : 'border border-teal text-teal hover:bg-teal hover:text-white')
+                  }
+                >
+                  Get Started
+                </Link>
+              </div>
             ))}
-          </StaggerContainer>
+          </div>
+
+          <p className="text-center text-sm text-gunmetal/60 mt-8">
+            Not sure which package fits? <Link to="/contact" className="text-teal font-medium hover:underline">Get a free audit</Link> and we&rsquo;ll recommend one.
+          </p>
+        </div>
+      </section>
+
+      {/* ── A la carte services ─────────────────────────────────────── */}
+      <section id="services" className="py-20 bg-gunmetal/5">
+        <div className="container-site">
+          <div className="max-w-2xl mx-auto text-center mb-12">
+            <p className="text-teal text-sm font-semibold tracking-wider uppercase mb-3">
+              À la carte
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gunmetal mb-3">
+              Every service we offer.
+            </h2>
+            <p className="text-gunmetal/70">
+              Build your own mix. Each one is designed to fix a different lead leak.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            {services.map((svc) => {
+              const Icon = svc.icon;
+              return (
+                <div
+                  key={svc.name}
+                  className="group bg-white p-6 rounded-2xl border border-gunmetal/10 hover:border-teal/50 hover:shadow-lg transition-all duration-200 flex flex-col"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="w-11 h-11 rounded-lg bg-teal/10 group-hover:bg-teal/20 flex items-center justify-center transition-colors">
+                      <Icon className="w-5 h-5 text-teal" strokeWidth={2.25} />
+                    </div>
+                    <span className="text-xs font-semibold text-gunmetal/40">
+                      {svc.number}
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-bold text-gunmetal mb-1">{svc.name}</h3>
+                  <p className="text-sm text-teal font-semibold mb-3">{svc.price}</p>
+                  <p className="text-sm text-gunmetal/70 leading-relaxed flex-grow">
+                    {svc.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA band ─────────────────────────────────────────────────── */}
+      <section className="py-20 bg-dark-footer text-white">
+        <div className="container-site">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+              Not sure where to start?
+            </h2>
+            <p className="text-white/70 mb-8 text-lg">
+              Get a free audit. We&rsquo;ll show you exactly where your leads are leaking —
+              and which service(s) plug each leak.
+            </p>
+            <Link
+              to="/contact"
+              className="inline-flex items-center px-6 py-3.5 bg-teal text-white font-semibold text-base rounded-button hover:bg-teal-hover hover:-translate-y-0.5 transition-all duration-200"
+            >
+              Get my free audit
+            </Link>
+          </div>
         </div>
       </section>
     </div>
