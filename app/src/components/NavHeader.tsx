@@ -63,8 +63,8 @@ export function NavHeader() {
               <Menu className="w-6 h-6" />
             </button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[300px] bg-white">
-            <div className="flex flex-col gap-6 mt-8">
+          <SheetContent side="right" className="w-[340px] bg-white px-7 py-8">
+            <div className="flex flex-col gap-7 mt-10">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
@@ -82,7 +82,7 @@ export function NavHeader() {
               <Link
                 to="/contact"
                 onClick={() => setOpen(false)}
-                className="inline-flex items-center justify-center px-5 py-3 bg-teal text-white text-sm font-semibold rounded-button hover:bg-teal-hover transition-colors mt-4"
+                className="inline-flex items-center justify-center px-6 py-3.5 bg-teal text-white text-sm font-semibold rounded-button hover:bg-teal-hover transition-colors mt-6 shadow-button"
               >
                 Free Website Audit
               </Link>

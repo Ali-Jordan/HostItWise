@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://host-it-wise.vercel.app/sitemap.xml
+Sitemap: https://hostitwise.com/sitemap.xml
