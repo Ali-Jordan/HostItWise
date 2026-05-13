@@ -11,23 +11,17 @@ import {
   Check,
 } from 'lucide-react';
 
-// ── PACKAGES ────────────────────────────────────────────────────────────────
+// 3 packages — Website Launch is a one-time service, not a recurring package,
+// so it lives in the services grid only with a callout below the packages.
 const packages = [
-  {
-    name: 'Website Launch',
-    price: '$250–750',
-    priceSuffix: 'one-time',
-    tagline: 'One-time site build',
-    popular: false,
-    features: ['Custom design', 'Mobile-first build', 'SEO foundation', 'You own the code'],
-  },
   {
     name: 'Starter',
     price: '$199',
     priceSuffix: '/mo',
-    tagline: 'Stop the bleed',
+    tagline: 'Plug the leaks',
     popular: false,
-    features: ['Lead recovery', 'Review growth', 'Monthly reporting'],
+    note: null,
+    features: ['Lead Recovery', 'Reputation Growth', 'Monthly reporting'],
   },
   {
     name: 'Growth',
@@ -35,7 +29,13 @@ const packages = [
     priceSuffix: '/mo',
     tagline: 'Build a real engine',
     popular: true,
-    features: ['Hosting + maintenance', 'Lead recovery', 'Reputation growth', 'Local visibility'],
+    note: null,
+    features: [
+      'Hosting + Maintenance',
+      'Lead Recovery',
+      'Reputation Growth',
+      'Local Visibility',
+    ],
   },
   {
     name: 'Demand',
@@ -43,17 +43,25 @@ const packages = [
     priceSuffix: '/mo + ad spend',
     tagline: 'Pour gasoline on it',
     popular: false,
-    features: ['Google Ads management', 'Landing pages', 'Call tracking', 'Weekly optimization'],
+    note: 'Layers on Growth — combined $1,498/mo + ad spend.',
+    features: [
+      'Google Ads Management',
+      'Landing Pages',
+      'Call Tracking',
+      'Weekly Optimization',
+    ],
   },
 ];
 
-// ── A LA CARTE SERVICES ────────────────────────────────────────────────────
+// 8 a la carte services. addon: true marks the optional layers
+// (Follow-Up + Content Day) so the cards display an "Add-on" badge.
 const services = [
   {
     number: '01',
     icon: Monitor,
     name: 'Website Launch',
     price: '$250–750 one-time',
+    addon: false,
     description:
       'A fast, modern, conversion-focused site built in 7–14 days. Mobile-first, SEO-ready, hosted on Vercel. You own the code.',
   },
@@ -62,14 +70,16 @@ const services = [
     icon: Server,
     name: 'Hosting + Maintenance',
     price: '$49–99/mo',
+    addon: false,
     description:
       'Fast hosting, monthly security updates, weekly backups, and content edits when you need them. Your site stays fast, current, and online.',
   },
   {
     number: '03',
     icon: PhoneIncoming,
-    name: 'Lead Recovery System',
+    name: 'Lead Recovery',
     price: '$49–149/mo',
+    addon: false,
     description:
       'Capture missed calls, texts, and abandoned form submissions. Automated follow-ups so cold leads warm back up before they call a competitor.',
   },
@@ -78,22 +88,25 @@ const services = [
     icon: Star,
     name: 'Reputation Growth',
     price: '$49–149/mo',
+    addon: false,
     description:
       'Automated review requests after every job. Build a 4.8+ star Google profile that wins clicks before your competitors even get a chance.',
   },
   {
     number: '05',
     icon: MapPin,
-    name: 'Local Visibility Engine',
+    name: 'Local Visibility',
     price: '$250–500/mo',
+    addon: false,
     description:
       'Google Business Profile optimization plus local SEO. Show up when neighbors search "[service] near me" instead of your competitor down the street.',
   },
   {
     number: '06',
     icon: TrendingUp,
-    name: 'Google Ads Lead Engine',
+    name: 'Google Ads Management',
     price: '$300–750/mo + ad spend',
+    addon: false,
     description:
       'Conversion-tracked Google Ads with dedicated landing pages, call tracking, and weekly optimization. Pay for clicks that turn into booked jobs.',
   },
@@ -102,6 +115,7 @@ const services = [
     icon: MessageSquare,
     name: 'Follow-Up Engine',
     price: '$99–299/mo',
+    addon: true,
     description:
       'Email and SMS sequences that re-engage past customers and book repeat work. The cheapest lead is the one who already paid you once.',
   },
@@ -110,15 +124,16 @@ const services = [
     icon: Camera,
     name: 'Content Day',
     price: '$300–800 one-time',
+    addon: true,
     description:
-      'One full content day with VideoZak. Photos, video b-roll, headshots, team shots — everything you need to keep your site and socials fed for a year.',
+      'One full content day with a local professional photographer. Photos, video b-roll, headshots, team shots — everything you need to keep your site and socials fed for a year.',
   },
 ];
 
 export default function Services() {
   return (
     <div className="bg-white">
-      {/* ── Hero ─────────────────────────────────────────────────────── */}
+      {/* Hero */}
       <section className="pt-32 pb-12">
         <div className="container-site">
           <div className="max-w-3xl mx-auto text-center">
@@ -135,7 +150,7 @@ export default function Services() {
         </div>
       </section>
 
-      {/* ── Packages ─────────────────────────────────────────────────── */}
+      {/* Packages */}
       <section id="packages" className="py-12">
         <div className="container-site">
           <div className="max-w-2xl mx-auto text-center mb-12">
@@ -150,7 +165,7 @@ export default function Services() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {packages.map((pkg) => (
               <div
                 key={pkg.name}
@@ -180,6 +195,11 @@ export default function Services() {
                     </li>
                   ))}
                 </ul>
+                {pkg.note && (
+                  <p className="text-xs text-teal/90 mb-4 px-3 py-2 bg-teal/5 rounded-md border border-teal/20 leading-relaxed">
+                    {pkg.note}
+                  </p>
+                )}
                 <Link
                   to="/contact"
                   className={
@@ -195,13 +215,24 @@ export default function Services() {
             ))}
           </div>
 
-          <p className="text-center text-sm text-gunmetal/60 mt-8">
-            Not sure which package fits? <Link to="/contact" className="text-teal font-medium hover:underline">Get a free audit</Link> and we&rsquo;ll recommend one.
-          </p>
+          {/* Website Launch upsell + bridge into a la carte services */}
+          <div className="max-w-3xl mx-auto mt-10 text-center space-y-3">
+            <p className="text-sm text-gunmetal/80">
+              <span className="font-semibold text-gunmetal">Need a site first?</span>{' '}
+              Add <span className="font-semibold text-gunmetal">Website Launch</span> ($250–750 one-time) to any plan.
+            </p>
+            <p className="text-sm text-gunmetal/60">
+              Packages bundle our most-used combinations. Add any à la carte service to any package.{' '}
+              <Link to="/contact" className="text-teal font-medium hover:underline">
+                Get a free audit
+              </Link>{' '}
+              and we&rsquo;ll recommend the right mix.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* ── A la carte services ─────────────────────────────────────── */}
+      {/* A la carte services */}
       <section id="services" className="py-20 bg-gunmetal/5">
         <div className="container-site">
           <div className="max-w-2xl mx-auto text-center mb-12">
@@ -212,7 +243,7 @@ export default function Services() {
               Every service we offer.
             </h2>
             <p className="text-gunmetal/70">
-              Build your own mix. Each one is designed to fix a different lead leak.
+              Build your own mix or layer onto a package. Each one fixes a different lead leak.
             </p>
           </div>
 
@@ -228,9 +259,15 @@ export default function Services() {
                     <div className="w-11 h-11 rounded-lg bg-teal/10 group-hover:bg-teal/20 flex items-center justify-center transition-colors">
                       <Icon className="w-5 h-5 text-teal" strokeWidth={2.25} />
                     </div>
-                    <span className="text-xs font-semibold text-gunmetal/40">
-                      {svc.number}
-                    </span>
+                    {svc.addon ? (
+                      <span className="px-2 py-0.5 bg-teal/10 text-teal text-[10px] font-bold tracking-wider uppercase rounded">
+                        Add-on
+                      </span>
+                    ) : (
+                      <span className="text-xs font-semibold text-gunmetal/40">
+                        {svc.number}
+                      </span>
+                    )}
                   </div>
                   <h3 className="text-lg font-bold text-gunmetal mb-1">{svc.name}</h3>
                   <p className="text-sm text-teal font-semibold mb-3">{svc.price}</p>
@@ -244,7 +281,7 @@ export default function Services() {
         </div>
       </section>
 
-      {/* ── CTA band ─────────────────────────────────────────────────── */}
+      {/* CTA band */}
       <section className="py-20 bg-dark-footer text-white">
         <div className="container-site">
           <div className="max-w-2xl mx-auto text-center">

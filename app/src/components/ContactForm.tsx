@@ -135,8 +135,8 @@ export function ContactForm({
           <input
             id="website"
             name="website"
-            type="url"
-            placeholder="https://yourbusiness.com"
+            type="text"
+            placeholder="yourbusiness.com"
             className={inputBase}
           />
         </div>
