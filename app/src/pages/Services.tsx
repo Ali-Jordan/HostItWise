@@ -10,15 +10,15 @@ import {
   Camera,
   Palette,
   Headphones,
+  Bot,
+  Calculator,
   Check,
 } from 'lucide-react';
 
-// 3 packages — Website Launch is one-time (lives in services grid).
-// Hosting is now in every recurring tier as the foundation.
 const packages = [
   {
     name: 'Starter',
-    price: '$199',
+    price: '$149',
     priceSuffix: '/mo',
     tagline: 'Plug the leaks',
     popular: false,
@@ -27,75 +27,72 @@ const packages = [
   },
   {
     name: 'Growth',
-    price: '$499',
+    price: '$329',
     priceSuffix: '/mo',
     tagline: 'Build a real engine',
     popular: true,
     note: null,
-    features: [
-      'Hosting + Maintenance',
-      'Lead Recovery',
-      'Reputation Growth',
-      'Local Visibility',
-      'Monthly reporting',
-    ],
+    features: ['Hosting + Maintenance', 'Lead Recovery', 'Reputation Growth', 'Local Visibility', 'Monthly reporting'],
   },
   {
     name: 'Demand',
-    price: '$999',
+    price: '$599',
     priceSuffix: '/mo + ad spend',
     tagline: 'Pour gasoline on it',
     popular: false,
-    note: 'Layers on Growth — combined $1,498/mo + ad spend.',
-    features: [
-      'Google Ads Management',
-      'Landing Pages',
-      'Call Tracking',
-      'Weekly Optimization',
-    ],
+    note: 'Layers on Growth — combined $928/mo + ad spend.',
+    features: ['Google Ads Management', 'Landing Pages', 'Call Tracking', 'Weekly Optimization'],
   },
 ];
 
 const services = [
   {
-    number: '01', icon: Monitor, name: 'Website Launch', price: '$250–750 one-time', addon: false,
+    number: '01', icon: Monitor, name: 'Website Launch', price: '$200–600 one-time', addon: false,
     description: 'A fast, modern, conversion-focused site built in 7–14 days. Mobile-first, SEO-ready, hosted on Vercel. You own the code.',
   },
   {
-    number: '02', icon: Server, name: 'Hosting + Maintenance', price: '$49–99/mo', addon: false,
+    number: '02', icon: Server, name: 'Hosting + Maintenance', price: '$39–89/mo', addon: false,
     description: 'Fast hosting, monthly security updates, weekly backups, and content edits when you need them. Your site stays fast, current, and online.',
   },
   {
-    number: '03', icon: PhoneIncoming, name: 'Lead Recovery', price: '$49–149/mo', addon: false,
+    number: '03', icon: PhoneIncoming, name: 'Lead Recovery', price: '$39–99/mo', addon: false,
     description: 'Capture missed calls, texts, and abandoned form submissions. Automated follow-ups so cold leads warm back up before they call a competitor.',
   },
   {
-    number: '04', icon: Star, name: 'Reputation Growth', price: '$49–149/mo', addon: false,
+    number: '04', icon: Star, name: 'Reputation Growth', price: '$39–99/mo', addon: false,
     description: 'Automated review requests after every job. Build a 4.8+ star Google profile that wins clicks before your competitors even get a chance.',
   },
   {
-    number: '05', icon: MapPin, name: 'Local Visibility', price: '$250–500/mo', addon: false,
+    number: '05', icon: MapPin, name: 'Local Visibility', price: '$149–399/mo', addon: false,
     description: 'Google Business Profile optimization plus local SEO. Show up when neighbors search "[service] near me" instead of your competitor down the street.',
   },
   {
-    number: '06', icon: TrendingUp, name: 'Google Ads Management', price: '$300–750/mo + ad spend', addon: false,
+    number: '06', icon: TrendingUp, name: 'Google Ads Management', price: '$199–599/mo + ad spend', addon: false,
     description: 'Conversion-tracked Google Ads with dedicated landing pages, call tracking, and weekly optimization. Pay for clicks that turn into booked jobs.',
   },
   {
-    number: '07', icon: MessageSquare, name: 'Follow-Up Engine', price: '$99–299/mo', addon: true,
+    number: '07', icon: MessageSquare, name: 'Follow-Up Engine', price: '$59–199/mo', addon: true,
     description: 'Email and SMS sequences that re-engage past customers and book repeat work. The cheapest lead is the one who already paid you once.',
   },
   {
-    number: '08', icon: Camera, name: 'Content Day', price: '$300–800 one-time', addon: true,
+    number: '08', icon: Camera, name: 'Content Day', price: '$399–799 one-time', addon: true,
     description: 'One full content day with a local professional photographer. Photos, video b-roll, headshots, team shots — everything you need to keep your site and socials fed for a year.',
   },
   {
-    number: '09', icon: Palette, name: 'Branding from Zero', price: '$500–2,000 one-time', addon: false,
-    description: 'Logo design, color system, typography, and brand guidelines built from scratch. For new businesses launching, or established ones ready for a refresh. Includes business card and social template designs at higher tiers.',
+    number: '09', icon: Palette, name: 'Branding from Zero', price: '$250–750 one-time', addon: false,
+    description: 'Logo, color palette, typography, and a simple style guide — built from scratch for new businesses or refreshed for established ones. Higher tiers add brand guide PDF, business card design, and social templates.',
   },
   {
-    number: '10', icon: Headphones, name: 'Live Reception + Booking', price: '$199 setup + $99–249/mo', addon: true,
-    description: 'Live receptionists (via our Smith.ai partnership) answer your calls 24/7 and book appointments straight into your calendar. We set up the script, integrate everything, and optimize monthly. Never miss a lead because no one was there to answer.',
+    number: '10', icon: Headphones, name: 'Live Reception + Booking', price: '$99 setup + $49–149/mo', addon: true,
+    description: 'Live receptionists (via Smith.ai) answer your calls 24/7 and book appointments straight into your calendar. We set up the script, wire the integration, and optimize monthly. Smith.ai bills you directly for minutes; we bill the setup and management.',
+  },
+  {
+    number: '11', icon: Bot, name: 'AI Chatbot', price: '$149 setup + $39–99/mo', addon: false,
+    description: 'A custom AI chatbot trained on your services, FAQ, hours, and service area. Lives on every page, captures leads 24/7, and answers common questions before a human is needed. Set up once, runs forever — and unlike Tidio or Drift, it actually knows your business.',
+  },
+  {
+    number: '12', icon: Calculator, name: 'Quote/Estimate Calculator', price: '$250–650 one-time', addon: false,
+    description: 'A custom instant-quote calculator on your site. Visitors enter a few details (square footage, project type, etc.) and get a real estimate on the spot. Qualifies leads with context, kills tire-kickers, and you own the calculator forever — no monthly rental fee.',
   },
 ];
 
@@ -175,7 +172,7 @@ export default function Services() {
           <div className="max-w-3xl mx-auto mt-10 text-center space-y-3">
             <p className="text-sm text-gunmetal/80">
               <span className="font-semibold text-gunmetal">Need a site first?</span>{' '}
-              Add <span className="font-semibold text-gunmetal">Website Launch</span> ($250–750 one-time) to any plan.
+              Add <span className="font-semibold text-gunmetal">Website Launch</span> ($200–600 one-time) to any plan.
             </p>
             <p className="text-sm text-gunmetal/60">
               Packages bundle our most-used combinations. Add any à la carte service to any package.{' '}

@@ -24,7 +24,7 @@ export function NavHeader() {
         isScrolled ? 'bg-white/95 backdrop-blur-md shadow-nav' : 'bg-transparent'
       }`}
     >
-      <div className="container-site flex items-center justify-between h-[88px]">
+      <div className="container-site flex items-center justify-between h-[88px] pr-2 md:pr-0">
         <Link to="/" className="flex items-center">
           <img src="/logo.png" alt="HostItWise" className="h-16 w-auto" />
         </Link>
@@ -58,7 +58,7 @@ export function NavHeader() {
           <SheetTrigger asChild className="md:hidden">
             <button
               aria-label="Open menu"
-              className="p-3 mr-2 -my-1 text-gunmetal rounded-md hover:bg-gunmetal/5 transition-colors"
+              className="p-3 mr-4 sm:mr-6 -my-1 text-gunmetal rounded-md hover:bg-gunmetal/5 transition-colors"
             >
               <Menu className="w-6 h-6" />
             </button>
