@@ -21,9 +21,7 @@ export function NavHeader() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-nav'
-          : 'bg-transparent'
+        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-nav' : 'bg-transparent'
       }`}
     >
       <div className="container-site flex items-center justify-between h-[88px]">
@@ -31,7 +29,6 @@ export function NavHeader() {
           <img src="/logo.png" alt="HostItWise" className="h-16 w-auto" />
         </Link>
 
-        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
@@ -57,8 +54,6 @@ export function NavHeader() {
           </Link>
         </div>
 
-        {/* Mobile Nav — larger tap target (p-3) + right margin (mr-2) so the
-            hamburger isn't pressed against the screen edge. */}
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild className="md:hidden">
             <button

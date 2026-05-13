@@ -11,8 +11,8 @@ import {
   Check,
 } from 'lucide-react';
 
-// 3 packages — Website Launch is a one-time service, not a recurring package,
-// so it lives in the services grid only with a callout below the packages.
+// 3 packages — Website Launch is one-time (lives in services grid).
+// Hosting is now in every recurring tier as the foundation.
 const packages = [
   {
     name: 'Starter',
@@ -54,93 +54,48 @@ const packages = [
   },
 ];
 
-// 8 a la carte services. addon: true marks the optional layers
-// (Follow-Up + Content Day) so the cards display an "Add-on" badge.
 const services = [
   {
-    number: '01',
-    icon: Monitor,
-    name: 'Website Launch',
-    price: '$250–750 one-time',
-    addon: false,
-    description:
-      'A fast, modern, conversion-focused site built in 7–14 days. Mobile-first, SEO-ready, hosted on Vercel. You own the code.',
+    number: '01', icon: Monitor, name: 'Website Launch', price: '$250–750 one-time', addon: false,
+    description: 'A fast, modern, conversion-focused site built in 7–14 days. Mobile-first, SEO-ready, hosted on Vercel. You own the code.',
   },
   {
-    number: '02',
-    icon: Server,
-    name: 'Hosting + Maintenance',
-    price: '$49–99/mo',
-    addon: false,
-    description:
-      'Fast hosting, monthly security updates, weekly backups, and content edits when you need them. Your site stays fast, current, and online.',
+    number: '02', icon: Server, name: 'Hosting + Maintenance', price: '$49–99/mo', addon: false,
+    description: 'Fast hosting, monthly security updates, weekly backups, and content edits when you need them. Your site stays fast, current, and online.',
   },
   {
-    number: '03',
-    icon: PhoneIncoming,
-    name: 'Lead Recovery',
-    price: '$49–149/mo',
-    addon: false,
-    description:
-      'Capture missed calls, texts, and abandoned form submissions. Automated follow-ups so cold leads warm back up before they call a competitor.',
+    number: '03', icon: PhoneIncoming, name: 'Lead Recovery', price: '$49–149/mo', addon: false,
+    description: 'Capture missed calls, texts, and abandoned form submissions. Automated follow-ups so cold leads warm back up before they call a competitor.',
   },
   {
-    number: '04',
-    icon: Star,
-    name: 'Reputation Growth',
-    price: '$49–149/mo',
-    addon: false,
-    description:
-      'Automated review requests after every job. Build a 4.8+ star Google profile that wins clicks before your competitors even get a chance.',
+    number: '04', icon: Star, name: 'Reputation Growth', price: '$49–149/mo', addon: false,
+    description: 'Automated review requests after every job. Build a 4.8+ star Google profile that wins clicks before your competitors even get a chance.',
   },
   {
-    number: '05',
-    icon: MapPin,
-    name: 'Local Visibility',
-    price: '$250–500/mo',
-    addon: false,
-    description:
-      'Google Business Profile optimization plus local SEO. Show up when neighbors search "[service] near me" instead of your competitor down the street.',
+    number: '05', icon: MapPin, name: 'Local Visibility', price: '$250–500/mo', addon: false,
+    description: 'Google Business Profile optimization plus local SEO. Show up when neighbors search "[service] near me" instead of your competitor down the street.',
   },
   {
-    number: '06',
-    icon: TrendingUp,
-    name: 'Google Ads Management',
-    price: '$300–750/mo + ad spend',
-    addon: false,
-    description:
-      'Conversion-tracked Google Ads with dedicated landing pages, call tracking, and weekly optimization. Pay for clicks that turn into booked jobs.',
+    number: '06', icon: TrendingUp, name: 'Google Ads Management', price: '$300–750/mo + ad spend', addon: false,
+    description: 'Conversion-tracked Google Ads with dedicated landing pages, call tracking, and weekly optimization. Pay for clicks that turn into booked jobs.',
   },
   {
-    number: '07',
-    icon: MessageSquare,
-    name: 'Follow-Up Engine',
-    price: '$99–299/mo',
-    addon: true,
-    description:
-      'Email and SMS sequences that re-engage past customers and book repeat work. The cheapest lead is the one who already paid you once.',
+    number: '07', icon: MessageSquare, name: 'Follow-Up Engine', price: '$99–299/mo', addon: true,
+    description: 'Email and SMS sequences that re-engage past customers and book repeat work. The cheapest lead is the one who already paid you once.',
   },
   {
-    number: '08',
-    icon: Camera,
-    name: 'Content Day',
-    price: '$300–800 one-time',
-    addon: true,
-    description:
-      'One full content day with a local professional photographer. Photos, video b-roll, headshots, team shots — everything you need to keep your site and socials fed for a year.',
+    number: '08', icon: Camera, name: 'Content Day', price: '$300–800 one-time', addon: true,
+    description: 'One full content day with a local professional photographer. Photos, video b-roll, headshots, team shots — everything you need to keep your site and socials fed for a year.',
   },
 ];
 
 export default function Services() {
   return (
     <div className="bg-white">
-      {/* Hero */}
       <section className="pt-32 pb-12">
         <div className="container-site">
           <div className="max-w-3xl mx-auto text-center">
-            <p className="text-teal text-sm font-semibold tracking-wider uppercase mb-3">
-              Solutions
-            </p>
+            <p className="text-teal text-sm font-semibold tracking-wider uppercase mb-3">Solutions</p>
             <h1 className="text-5xl sm:text-6xl font-bold text-gunmetal mb-6 leading-tight">
               Pick a package. Or build your own.
             </h1>
@@ -151,19 +106,12 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Packages */}
       <section id="packages" className="py-12">
         <div className="container-site">
           <div className="max-w-2xl mx-auto text-center mb-12">
-            <p className="text-teal text-sm font-semibold tracking-wider uppercase mb-3">
-              Packages
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gunmetal mb-3">
-              A plan for every stage of growth.
-            </h2>
-            <p className="text-gunmetal/70">
-              Start small or go all-in. Every package bundles the services that work together.
-            </p>
+            <p className="text-teal text-sm font-semibold tracking-wider uppercase mb-3">Packages</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gunmetal mb-3">A plan for every stage of growth.</h2>
+            <p className="text-gunmetal/70">Start small or go all-in. Every package bundles the services that work together.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -197,9 +145,7 @@ export default function Services() {
                   ))}
                 </ul>
                 {pkg.note && (
-                  <p className="text-xs text-teal/90 mb-4 px-3 py-2 bg-teal/5 rounded-md border border-teal/20 leading-relaxed">
-                    {pkg.note}
-                  </p>
+                  <p className="text-xs text-teal/90 mb-4 px-3 py-2 bg-teal/5 rounded-md border border-teal/20 leading-relaxed">{pkg.note}</p>
                 )}
                 <Link
                   to="/contact"
@@ -216,7 +162,6 @@ export default function Services() {
             ))}
           </div>
 
-          {/* Website Launch upsell + bridge into a la carte services */}
           <div className="max-w-3xl mx-auto mt-10 text-center space-y-3">
             <p className="text-sm text-gunmetal/80">
               <span className="font-semibold text-gunmetal">Need a site first?</span>{' '}
@@ -224,57 +169,39 @@ export default function Services() {
             </p>
             <p className="text-sm text-gunmetal/60">
               Packages bundle our most-used combinations. Add any à la carte service to any package.{' '}
-              <Link to="/contact" className="text-teal font-medium hover:underline">
-                Get a free audit
-              </Link>{' '}
+              <Link to="/contact" className="text-teal font-medium hover:underline">Get a free audit</Link>{' '}
               and we&rsquo;ll recommend the right mix.
             </p>
           </div>
         </div>
       </section>
 
-      {/* A la carte services */}
       <section id="services" className="py-20 bg-gunmetal/5">
         <div className="container-site">
           <div className="max-w-2xl mx-auto text-center mb-12">
-            <p className="text-teal text-sm font-semibold tracking-wider uppercase mb-3">
-              À la carte
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gunmetal mb-3">
-              Every service we offer.
-            </h2>
-            <p className="text-gunmetal/70">
-              Build your own mix or layer onto a package. Each one fixes a different lead leak.
-            </p>
+            <p className="text-teal text-sm font-semibold tracking-wider uppercase mb-3">À la carte</p>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gunmetal mb-3">Every service we offer.</h2>
+            <p className="text-gunmetal/70">Build your own mix or layer onto a package. Each one fixes a different lead leak.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {services.map((svc) => {
               const Icon = svc.icon;
               return (
-                <div
-                  key={svc.name}
-                  className="group bg-white p-6 rounded-2xl border border-gunmetal/10 hover:border-teal/50 hover:shadow-lg transition-all duration-200 flex flex-col"
-                >
+                <div key={svc.name} className="group bg-white p-6 rounded-2xl border border-gunmetal/10 hover:border-teal/50 hover:shadow-lg transition-all duration-200 flex flex-col">
                   <div className="flex items-start justify-between mb-4">
                     <div className="w-11 h-11 rounded-lg bg-teal/10 group-hover:bg-teal/20 flex items-center justify-center transition-colors">
                       <Icon className="w-5 h-5 text-teal" strokeWidth={2.25} />
                     </div>
                     {svc.addon ? (
-                      <span className="px-2 py-0.5 bg-teal/10 text-teal text-[10px] font-bold tracking-wider uppercase rounded">
-                        Add-on
-                      </span>
+                      <span className="px-2 py-0.5 bg-teal/10 text-teal text-[10px] font-bold tracking-wider uppercase rounded">Add-on</span>
                     ) : (
-                      <span className="text-xs font-semibold text-gunmetal/40">
-                        {svc.number}
-                      </span>
+                      <span className="text-xs font-semibold text-gunmetal/40">{svc.number}</span>
                     )}
                   </div>
                   <h3 className="text-lg font-bold text-gunmetal mb-1">{svc.name}</h3>
                   <p className="text-sm text-teal font-semibold mb-3">{svc.price}</p>
-                  <p className="text-sm text-gunmetal/70 leading-relaxed flex-grow">
-                    {svc.description}
-                  </p>
+                  <p className="text-sm text-gunmetal/70 leading-relaxed flex-grow">{svc.description}</p>
                 </div>
               );
             })}
@@ -282,21 +209,14 @@ export default function Services() {
         </div>
       </section>
 
-      {/* CTA band */}
       <section className="py-20 bg-dark-footer text-white">
         <div className="container-site">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Not sure where to start?
-            </h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Not sure where to start?</h2>
             <p className="text-white/70 mb-8 text-lg">
-              Get a free audit. We&rsquo;ll show you exactly where your leads are leaking —
-              and which service(s) plug each leak.
+              Get a free audit. We&rsquo;ll show you exactly where your leads are leaking — and which service(s) plug each leak.
             </p>
-            <Link
-              to="/contact"
-              className="inline-flex items-center px-6 py-3.5 bg-teal text-white font-semibold text-base rounded-button hover:bg-teal-hover hover:-translate-y-0.5 transition-all duration-200"
-            >
+            <Link to="/contact" className="inline-flex items-center px-6 py-3.5 bg-teal text-white font-semibold text-base rounded-button hover:bg-teal-hover hover:-translate-y-0.5 transition-all duration-200">
               Get my free audit
             </Link>
           </div>

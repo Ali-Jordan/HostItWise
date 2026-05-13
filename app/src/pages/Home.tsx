@@ -30,7 +30,6 @@ const problemCards = [
   { icon: MailOpen, title: 'Weak follow-up',   desc: 'Leads go cold because no one follows up fast enough.' },
 ];
 
-// Service names match canonical Services page (Lead Recovery, Local Visibility, Google Ads Management)
 const services = [
   { num: '01', name: 'Website Launch',         price: '$250–750 one-time' },
   { num: '02', name: 'Hosting + Maintenance',  price: '$49–99/mo' },
@@ -42,7 +41,7 @@ const services = [
   { num: '08', name: 'Content Day',            price: '$300–800 one-time' },
 ];
 
-// 3 packages — Website Launch is one-time (lives in services grid), not a recurring package.
+// Hosting now in Starter; Monthly reporting now in Growth.
 const packages = [
   {
     title: 'Starter',
@@ -77,12 +76,12 @@ const timelineSteps = [
 ];
 
 const results = [
-  { category: 'Website Redesign', title: 'Home Services Website',     metrics: [{ num: '+180%', label: 'Lead Volume' }, { num: '-40%', label: 'Bounce Rate' }], img: '/images/result-website.png' },
-  { category: 'Review Growth',    title: 'Legal Firm Reputation',     metrics: [{ num: '+312',  label: 'New Reviews' }, { num: '4.2→4.8', label: 'Rating' }],      img: '/images/result-reviews.png' },
-  { category: 'Ad Performance',   title: 'HVAC Paid Campaign',        metrics: [{ num: '-35%',  label: 'Cost Per Lead' }, { num: '+92%',   label: 'Conversion' }],  img: '/images/result-ads.png' },
+  { category: 'Website Redesign', title: 'Home Services Website', metrics: [{ num: '+180%', label: 'Lead Volume' }, { num: '-40%', label: 'Bounce Rate' }], img: '/images/result-website.png' },
+  { category: 'Review Growth',    title: 'Legal Firm Reputation', metrics: [{ num: '+312',  label: 'New Reviews' }, { num: '4.2→4.8', label: 'Rating' }],      img: '/images/result-reviews.png' },
+  { category: 'Ad Performance',   title: 'HVAC Paid Campaign',    metrics: [{ num: '-35%',  label: 'Cost Per Lead' }, { num: '+92%',   label: 'Conversion' }],  img: '/images/result-ads.png' },
 ];
 
-// 8 industries with real Lucide icons; lists balanced for uniform tile height
+// 8 industries, balanced lists, uniform tile heights via auto-rows-fr + h-full
 const industries = [
   { Icon: HomeIcon,    title: 'Home Services',  list: 'Roofing, HVAC, Plumbing, Electricians, Landscaping, Cleaning, Restoration, Pest Control' },
   { Icon: Scale,       title: 'Legal',          list: 'Personal Injury, Family Law, Criminal Defense, Immigration, Estate Planning, Real Estate Law' },
@@ -97,7 +96,7 @@ const industries = [
 export default function Home() {
   return (
     <div>
-      {/* Section 1 — Hero (motion starts visible to prevent blank flash) */}
+      {/* Section 1 — Hero (motion starts visible to prevent blank flash; funnel illustration enlarged) */}
       <section className="bg-white py-16 md:py-24">
         <div className="container-site">
           <div className="flex flex-col md:flex-row items-center gap-12">
@@ -165,7 +164,11 @@ export default function Home() {
               initial={{ opacity: 1, x: 0 }}
               animate={{ opacity: 1, x: 0 }}
             >
-              <img src="/images/about-visual.png" alt="Leads in, revenue out — the lead system illustration" className="w-full" />
+              <img
+                src="/images/about-visual.png"
+                alt="Leads in, revenue out — the lead system illustration"
+                className="w-full"
+              />
             </motion.div>
           </div>
         </div>
@@ -369,7 +372,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section 7 — Industries (real Lucide icons, not placeholder initials) */}
+      {/* Section 7 — Industries (8 tiles, 4 cols on desktop, uniform heights) */}
       <section className="bg-white py-20 md:py-24">
         <div className="container-site">
           <SectionHeader
@@ -379,10 +382,10 @@ export default function Home() {
 
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr" stagger={0.08}>
             {industries.map((ind) => {
-            const Icon = ind.Icon;
-            return (
-              <StaggerItem key={ind.title}>
-                <div className="bg-teal-light rounded-card p-7 hover:-translate-y-1 transition-all duration-300 h-full flex flex-col">
+              const Icon = ind.Icon;
+              return (
+                <StaggerItem key={ind.title}>
+                  <div className="bg-teal-light rounded-card p-7 hover:-translate-y-1 transition-all duration-300 h-full flex flex-col">
                     <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center mb-4">
                       <Icon className="w-5 h-5 text-teal" strokeWidth={2} />
                     </div>
