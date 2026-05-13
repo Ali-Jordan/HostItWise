@@ -21,7 +21,7 @@ const packages = [
     tagline: 'Plug the leaks',
     popular: false,
     note: null,
-    features: ['Lead Recovery', 'Reputation Growth', 'Monthly reporting'],
+    features: ['Hosting + Maintenance', 'Lead Recovery', 'Reputation Growth', 'Monthly reporting'],
   },
   {
     name: 'Growth',
@@ -35,6 +35,7 @@ const packages = [
       'Lead Recovery',
       'Reputation Growth',
       'Local Visibility',
+      'Monthly reporting',
     ],
   },
   {

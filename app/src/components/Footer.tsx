@@ -10,7 +10,6 @@ const serviceLinks = [
 ];
 
 const companyLinks = [
-  { label: 'About',     path: '/about' },
   { label: 'Results',   path: '/results' },
   { label: 'Portfolio', path: '/portfolio' },
   { label: 'Contact',   path: '/contact' },

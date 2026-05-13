@@ -11,6 +11,10 @@ import {
   Scale,
   HeartPulse,
   BedDouble,
+  Building2,
+  Car,
+  Wrench,
+  Scissors,
 } from 'lucide-react';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { StaggerContainer, StaggerItem } from '@/components/Stagger';
@@ -45,14 +49,14 @@ const packages = [
     price: '$199/mo',
     tagline: 'Plug the leaks',
     featured: false,
-    features: ['Lead Recovery', 'Reputation Growth', 'Monthly reporting'],
+    features: ['Hosting + Maintenance', 'Lead Recovery', 'Reputation Growth', 'Monthly reporting'],
   },
   {
     title: 'Growth',
     price: '$499/mo',
     tagline: 'Build a real engine',
     featured: true,
-    features: ['Hosting + Maintenance', 'Lead Recovery', 'Reputation Growth', 'Local Visibility'],
+    features: ['Hosting + Maintenance', 'Lead Recovery', 'Reputation Growth', 'Local Visibility', 'Monthly reporting'],
   },
   {
     title: 'Demand',
@@ -78,12 +82,16 @@ const results = [
   { category: 'Ad Performance',   title: 'HVAC Paid Campaign',        metrics: [{ num: '-35%',  label: 'Cost Per Lead' }, { num: '+92%',   label: 'Conversion' }],  img: '/images/result-ads.png' },
 ];
 
-// Real Lucide icons instead of placeholder single-letter initials
+// 8 industries with real Lucide icons; lists balanced for uniform tile height
 const industries = [
-  { Icon: HomeIcon,   title: 'Home Services', list: 'Roofing, HVAC, Plumbing, Electricians, Landscaping, Cleaning, Restoration, Pest Control, Moving, General Contractors' },
-  { Icon: Scale,      title: 'Legal',         list: 'Personal Injury, Family Law, Criminal Defense, Immigration, Estate Planning, Local Law Firms' },
-  { Icon: HeartPulse, title: 'Healthcare',    list: 'Med Spas, Chiropractors, Urgent Care, Physical Therapy, Dermatology, Primary Care, Private Clinics, Wellness' },
-  { Icon: BedDouble,  title: 'Hospitality',   list: 'Hotels, Boutique Hotels, Vacation Rentals' },
+  { Icon: HomeIcon,    title: 'Home Services',  list: 'Roofing, HVAC, Plumbing, Electricians, Landscaping, Cleaning, Restoration, Pest Control' },
+  { Icon: Scale,       title: 'Legal',          list: 'Personal Injury, Family Law, Criminal Defense, Immigration, Estate Planning, Real Estate Law' },
+  { Icon: HeartPulse,  title: 'Healthcare',     list: 'Med Spas, Chiropractors, Urgent Care, Physical Therapy, Dermatology, Dental, Wellness Clinics' },
+  { Icon: Building2,   title: 'Real Estate',    list: 'Agents, Brokers, Property Management, Home Inspectors, Mortgage Brokers, Title Companies' },
+  { Icon: Car,         title: 'Auto',           list: 'Auto Repair, Body Shops, Detailing, Tire Shops, Mobile Mechanics, Used Car Dealers' },
+  { Icon: Wrench,      title: 'Trades',         list: 'Builders, Remodelers, Architects, Interior Designers, Specialty Contractors, Concrete' },
+  { Icon: Scissors,    title: 'Personal Care',  list: 'Salons, Barbershops, Nail Studios, Spas, Estheticians, Tattoo Artists' },
+  { Icon: BedDouble,   title: 'Hospitality',    list: 'Hotels, Boutique Stays, Vacation Rentals, Restaurants, Catering, Event Venues' },
 ];
 
 export default function Home() {
@@ -153,15 +161,11 @@ export default function Home() {
               </motion.div>
             </div>
             <motion.div
-              className="flex-1 max-w-lg w-full"
+              className="flex-1 max-w-xl w-full"
               initial={{ opacity: 1, x: 0 }}
               animate={{ opacity: 1, x: 0 }}
             >
-              <img
-                src="/images/hero-mockup.png"
-                alt="Website dashboard mockup"
-                className="w-full rounded-image shadow-card"
-              />
+              <img src="/images/about-visual.png" alt="Leads in, revenue out — the lead system illustration" className="w-full" />
             </motion.div>
           </div>
         </div>
@@ -373,17 +377,17 @@ export default function Home() {
             headline="Built for the businesses that keep communities running."
           />
 
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-6" stagger={0.1}>
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr" stagger={0.08}>
             {industries.map((ind) => {
-              const Icon = ind.Icon;
-              return (
-                <StaggerItem key={ind.title}>
-                  <div className="bg-teal-light rounded-card p-8 hover:-translate-y-1 transition-all duration-300">
+            const Icon = ind.Icon;
+            return (
+              <StaggerItem key={ind.title}>
+                <div className="bg-teal-light rounded-card p-7 hover:-translate-y-1 transition-all duration-300 h-full flex flex-col">
                     <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center mb-4">
                       <Icon className="w-5 h-5 text-teal" strokeWidth={2} />
                     </div>
                     <h3 className="text-xl font-semibold text-gunmetal mb-3">{ind.title}</h3>
-                    <p className="text-sm text-secondary-text" style={{ lineHeight: 1.8 }}>{ind.list}</p>
+                    <p className="text-sm text-secondary-text flex-grow" style={{ lineHeight: 1.7 }}>{ind.list}</p>
                   </div>
                 </StaggerItem>
               );
