@@ -15,8 +15,6 @@ import {
   Car,
   Wrench,
   Scissors,
-  Palette,
-  Headphones,
 } from 'lucide-react';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { StaggerContainer, StaggerItem } from '@/components/Stagger';
