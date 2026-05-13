@@ -11,7 +11,7 @@ const serviceLinks = [
 const companyLinks = [
   { label: 'About', path: '/about' },
   { label: 'Results', path: '/results' },
-  { label: 'Packages', path: '/packages' },
+  { label: 'Portfolio', path: '/portfolio' },
   { label: 'Contact', path: '/contact' },
 ];
 
@@ -23,9 +23,11 @@ export function Footer() {
           {/* Logo Column */}
           <div>
             <Link to="/" className="inline-block">
-              <span className="text-xl font-bold">
-                Host<span className="text-teal">ItWise</span>
-              </span>
+              <img
+                src="/logo.png"
+                alt="HostItWise"
+                className="h-20 w-auto"
+              />
             </Link>
             <p className="mt-4 text-sm text-white/50" style={{ lineHeight: 1.5 }}>
               Lead systems for local businesses.

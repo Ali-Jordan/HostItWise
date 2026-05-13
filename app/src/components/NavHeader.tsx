@@ -7,7 +7,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 const navLinks = [
   { label: 'Home', path: '/' },
   { label: 'Services', path: '/services' },
-  { label: 'Packages', path: '/packages' },
+  { label: 'Portfolio', path: '/portfolio' },
   { label: 'Results', path: '/results' },
   { label: 'About', path: '/about' },
   { label: 'Contact', path: '/contact' },
@@ -27,11 +27,9 @@ export function NavHeader() {
           : 'bg-transparent'
       }`}
     >
-      <div className="container-site flex items-center justify-between h-[72px]">
+      <div className="container-site flex items-center justify-between h-[88px]">
         <Link to="/" className="flex items-center">
-          <span className="text-xl font-bold text-gunmetal">
-            Host<span className="text-teal">ItWise</span>
-          </span>
+          <img src="/logo.png" alt="HostItWise" className="h-16 w-auto" />
         </Link>
 
         {/* Desktop Nav */}
