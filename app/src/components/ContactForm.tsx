@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
-const ACCESS_KEY = 'ed4c0686-6f3a-48c9-b18b-4700232d6c61';
+const ACCESS_KEY =
+  import.meta.env.VITE_WEB3FORMS_KEY || 'ed4c0686-6f3a-48c9-b18b-4700232d6c61';
 const SUBMIT_URL = 'https://api.web3forms.com/submit';
+const MIN_FORM_TIME_MS = 3000;
 
 interface ContactFormProps {
-  /** subject line for the email Web3Forms will send you */
   subject?: string;
-  /** small variant uses fewer fields and tighter spacing */
   compact?: boolean;
 }
 
@@ -18,11 +18,20 @@ export function ContactForm({
 }: ContactFormProps) {
   const [status, setStatus] = useState<Status>('idle');
   const [error, setError] = useState<string>('');
+  const mountedAt = useRef<number>(Date.now());
+
+  useEffect(() => { mountedAt.current = Date.now(); }, []);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus('sending');
     setError('');
+
+    if (Date.now() - mountedAt.current < MIN_FORM_TIME_MS) {
+      setStatus('error');
+      setError('Hold on a moment, then try again.');
+      return;
+    }
 
     const formEl = e.currentTarget;
     const formData = new FormData(formEl);
@@ -50,9 +59,16 @@ export function ContactForm({
     return (
       <div className="p-8 bg-teal/10 border border-teal/40 rounded-xl text-center">
         <h3 className="text-2xl font-bold text-gunmetal mb-2">Got it.</h3>
-        <p className="text-gunmetal/80">
+        <p className="text-gunmetal/80 mb-6">
           Your message is in. We&rsquo;ll get back to you within 24 hours.
         </p>
+        {/* TODO: swap '#' for your real Calendly link */}
+        <a
+          href="#"
+          className="inline-flex items-center px-5 py-2.5 bg-teal text-white text-sm font-semibold rounded-button hover:bg-teal-hover transition-colors"
+        >
+          Or book a 15-min call now
+        </a>
       </div>
     );
   }
@@ -65,95 +81,40 @@ export function ContactForm({
 
   return (
     <form onSubmit={handleSubmit} className={compact ? 'space-y-3' : 'space-y-4'}>
-      {/* honeypot for spam */}
       <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} aria-hidden="true" />
 
       <div className={compact ? 'grid grid-cols-1 sm:grid-cols-2 gap-3' : 'grid grid-cols-1 sm:grid-cols-2 gap-4'}>
         <div>
-          <label className="block text-sm font-medium text-gunmetal mb-1.5" htmlFor="name">
-            Your name
-          </label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            required
-            autoComplete="name"
-            placeholder="Jane Smith"
-            className={inputBase}
-          />
+          <label className="block text-sm font-medium text-gunmetal mb-1.5" htmlFor="name">Your name</label>
+          <input id="name" name="name" type="text" required autoComplete="name" placeholder="Jane Smith" className={inputBase} />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gunmetal mb-1.5" htmlFor="business">
-            Business name
-          </label>
-          <input
-            id="business"
-            name="business"
-            type="text"
-            placeholder="Acme Roofing"
-            className={inputBase}
-          />
+          <label className="block text-sm font-medium text-gunmetal mb-1.5" htmlFor="business">Business name</label>
+          <input id="business" name="business" type="text" placeholder="Acme Roofing" className={inputBase} />
         </div>
       </div>
 
       <div className={compact ? 'grid grid-cols-1 sm:grid-cols-2 gap-3' : 'grid grid-cols-1 sm:grid-cols-2 gap-4'}>
         <div>
-          <label className="block text-sm font-medium text-gunmetal mb-1.5" htmlFor="email">
-            Email
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            autoComplete="email"
-            placeholder="you@business.com"
-            className={inputBase}
-          />
+          <label className="block text-sm font-medium text-gunmetal mb-1.5" htmlFor="email">Email</label>
+          <input id="email" name="email" type="email" required autoComplete="email" placeholder="you@business.com" className={inputBase} />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gunmetal mb-1.5" htmlFor="phone">
-            Phone
-          </label>
-          <input
-            id="phone"
-            name="phone"
-            type="tel"
-            autoComplete="tel"
-            placeholder="(555) 555-5555"
-            className={inputBase}
-          />
+          <label className="block text-sm font-medium text-gunmetal mb-1.5" htmlFor="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" autoComplete="tel" placeholder="(555) 555-5555" className={inputBase} />
         </div>
       </div>
 
       {!compact && (
         <div>
-          <label className="block text-sm font-medium text-gunmetal mb-1.5" htmlFor="website">
-            Current website (if any)
-          </label>
-          <input
-            id="website"
-            name="website"
-            type="text"
-            placeholder="yourbusiness.com"
-            className={inputBase}
-          />
+          <label className="block text-sm font-medium text-gunmetal mb-1.5" htmlFor="website">Current website (if any)</label>
+          <input id="website" name="website" type="text" placeholder="yourbusiness.com" className={inputBase} />
         </div>
       )}
 
       <div>
-        <label className="block text-sm font-medium text-gunmetal mb-1.5" htmlFor="message">
-          What&rsquo;s the lead leak?
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          rows={compact ? 3 : 5}
-          required
-          placeholder="Missed calls? Outdated site? Low review count? Tell us what&rsquo;s costing you leads."
-          className={inputBase + ' resize-y'}
-        />
+        <label className="block text-sm font-medium text-gunmetal mb-1.5" htmlFor="message">What&rsquo;s the lead leak?</label>
+        <textarea id="message" name="message" rows={compact ? 3 : 5} required placeholder="Missed calls? Outdated site? Low review count? Tell us what&rsquo;s costing you leads." className={inputBase + ' resize-y'} />
       </div>
 
       {status === 'error' && (
@@ -165,13 +126,7 @@ export function ContactForm({
       <button
         type="submit"
         disabled={status === 'sending'}
-        className={
-          'w-full inline-flex items-center justify-center px-6 py-3 ' +
-          'bg-teal text-white text-base font-semibold rounded-button ' +
-          'hover:bg-teal-hover transition-all duration-200 ' +
-          'hover:-translate-y-0.5 ' +
-          'disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0'
-        }
+        className="w-full inline-flex items-center justify-center px-6 py-3 bg-teal text-white text-base font-semibold rounded-button hover:bg-teal-hover transition-all duration-200 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0"
       >
         {status === 'sending' ? 'Sending…' : 'Get my free audit'}
       </button>

@@ -5,12 +5,12 @@ import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 const navLinks = [
-  { label: 'Home', path: '/' },
-  { label: 'Services', path: '/services' },
+  { label: 'Home',      path: '/' },
+  { label: 'Services',  path: '/services' },
   { label: 'Portfolio', path: '/portfolio' },
-  { label: 'Results', path: '/results' },
-  { label: 'About', path: '/about' },
-  { label: 'Contact', path: '/contact' },
+  { label: 'Results',   path: '/results' },
+  { label: 'About',     path: '/about' },
+  { label: 'Contact',   path: '/contact' },
 ];
 
 export function NavHeader() {
@@ -58,10 +58,14 @@ export function NavHeader() {
           </Link>
         </div>
 
-        {/* Mobile Nav */}
+        {/* Mobile Nav — larger tap target (p-3) + right margin (mr-2) so the
+            hamburger isn't pressed against the screen edge. */}
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild className="md:hidden">
-            <button className="p-2 text-gunmetal">
+            <button
+              aria-label="Open menu"
+              className="p-3 mr-2 -my-1 text-gunmetal rounded-md hover:bg-gunmetal/5 transition-colors"
+            >
               <Menu className="w-6 h-6" />
             </button>
           </SheetTrigger>

@@ -1,35 +1,66 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Check, Monitor, PhoneOff, Star, MapPin, MailOpen } from 'lucide-react';
+import {
+  Check,
+  Monitor,
+  PhoneOff,
+  Star,
+  MapPin,
+  MailOpen,
+  Home as HomeIcon,
+  Scale,
+  HeartPulse,
+  BedDouble,
+} from 'lucide-react';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { StaggerContainer, StaggerItem } from '@/components/Stagger';
 import { SectionHeader } from '@/components/SectionHeader';
 
 import { ContactSection } from '../components/ContactSection';
+
 const problemCards = [
-  { icon: Monitor, title: 'Outdated website', desc: 'Your site looks old and doesn\'t convert visitors.' },
-  { icon: PhoneOff, title: 'Missed calls', desc: 'Every missed call is a lost customer you never knew about.' },
-  { icon: Star, title: 'Weak reviews', desc: 'Low review count makes you invisible to new customers.' },
-  { icon: MapPin, title: 'Poor visibility', desc: 'You\'re not showing up when people search for your service.' },
-  { icon: MailOpen, title: 'Weak follow-up', desc: 'Leads go cold because no one follows up fast enough.' },
+  { icon: Monitor,  title: 'Outdated website', desc: "Your site looks old and doesn't convert visitors." },
+  { icon: PhoneOff, title: 'Missed calls',     desc: 'Every missed call is a lost customer you never knew about.' },
+  { icon: Star,     title: 'Weak reviews',     desc: 'Low review count makes you invisible to new customers.' },
+  { icon: MapPin,   title: 'Poor visibility',  desc: "You're not showing up when people search for your service." },
+  { icon: MailOpen, title: 'Weak follow-up',   desc: 'Leads go cold because no one follows up fast enough.' },
 ];
 
+// Service names match canonical Services page (Lead Recovery, Local Visibility, Google Ads Management)
 const services = [
-  { num: '01', name: 'Website Launch', price: '$250–750 one-time', icon: 'Globe', img: '/images/service-website.png' },
-  { num: '02', name: 'Hosting + Maintenance', price: '$49–99/mo', icon: 'Server', img: '/images/service-hosting.png' },
-  { num: '03', name: 'Lead Recovery System', price: '$49–149/mo', icon: 'PhoneCall', img: '/images/service-lead.png' },
-  { num: '04', name: 'Reputation Growth', price: '$49–149/mo', icon: 'Star', img: '/images/service-reputation.png' },
-  { num: '05', name: 'Local Visibility Engine', price: '$250–500/mo', icon: 'MapPin', img: '/images/service-visibility.png' },
-  { num: '06', name: 'Google Ads Lead Engine', price: '$300–750/mo + ad spend', icon: 'BarChart3', img: '/images/service-ads.png' },
-  { num: '07', name: 'Follow-Up Engine', price: '$99–299/mo', icon: 'Mail', img: '/images/service-followup.png' },
-  { num: '08', name: 'Content Day', price: '$300–800 one-time', icon: 'Camera', img: '/images/service-content.png' },
+  { num: '01', name: 'Website Launch',         price: '$250–750 one-time' },
+  { num: '02', name: 'Hosting + Maintenance',  price: '$49–99/mo' },
+  { num: '03', name: 'Lead Recovery',          price: '$49–149/mo' },
+  { num: '04', name: 'Reputation Growth',      price: '$49–149/mo' },
+  { num: '05', name: 'Local Visibility',       price: '$250–500/mo' },
+  { num: '06', name: 'Google Ads Management',  price: '$300–750/mo + ad spend' },
+  { num: '07', name: 'Follow-Up Engine',       price: '$99–299/mo' },
+  { num: '08', name: 'Content Day',            price: '$300–800 one-time' },
 ];
 
+// 3 packages — Website Launch is one-time (lives in services grid), not a recurring package.
 const packages = [
-  { icon: 'Globe', title: 'Website Launch', price: '$250–750 one-time', featured: false, features: [] },
-  { icon: 'Zap', title: 'Starter', price: '$199/mo', featured: false, features: ['Lead recovery', 'Review growth', 'Reporting'] },
-  { icon: 'TrendingUp', title: 'Growth', price: '$499/mo', featured: true, features: ['Hosting', 'Lead recovery', 'Reputation', 'Local visibility'] },
-  { icon: 'Rocket', title: 'Demand', price: '$999/mo + ad spend', featured: false, features: ['Google Ads', 'Landing pages', 'Tracking', 'Reporting'] },
+  {
+    title: 'Starter',
+    price: '$199/mo',
+    tagline: 'Plug the leaks',
+    featured: false,
+    features: ['Lead Recovery', 'Reputation Growth', 'Monthly reporting'],
+  },
+  {
+    title: 'Growth',
+    price: '$499/mo',
+    tagline: 'Build a real engine',
+    featured: true,
+    features: ['Hosting + Maintenance', 'Lead Recovery', 'Reputation Growth', 'Local Visibility'],
+  },
+  {
+    title: 'Demand',
+    price: '$999/mo + ad spend',
+    tagline: 'Pour gasoline on it',
+    featured: false,
+    features: ['Google Ads Management', 'Landing Pages', 'Call Tracking', 'Weekly Optimization'],
+  },
 ];
 
 const timelineSteps = [
@@ -42,57 +73,54 @@ const timelineSteps = [
 ];
 
 const results = [
-  { category: 'Website Redesign', title: 'Home Services Website', metrics: [{ num: '+180%', label: 'Lead Volume' }, { num: '-40%', label: 'Bounce Rate' }], img: '/images/result-website.png' },
-  { category: 'Review Growth', title: 'Legal Firm Reputation', metrics: [{ num: '+312', label: 'New Reviews' }, { num: '4.2→4.8', label: 'Rating' }], img: '/images/result-reviews.png' },
-  { category: 'Ad Performance', title: 'HVAC Paid Campaign', metrics: [{ num: '-35%', label: 'Cost Per Lead' }, { num: '+92%', label: 'Conversion' }], img: '/images/result-ads.png' },
+  { category: 'Website Redesign', title: 'Home Services Website',     metrics: [{ num: '+180%', label: 'Lead Volume' }, { num: '-40%', label: 'Bounce Rate' }], img: '/images/result-website.png' },
+  { category: 'Review Growth',    title: 'Legal Firm Reputation',     metrics: [{ num: '+312',  label: 'New Reviews' }, { num: '4.2→4.8', label: 'Rating' }],      img: '/images/result-reviews.png' },
+  { category: 'Ad Performance',   title: 'HVAC Paid Campaign',        metrics: [{ num: '-35%',  label: 'Cost Per Lead' }, { num: '+92%',   label: 'Conversion' }],  img: '/images/result-ads.png' },
 ];
 
+// Real Lucide icons instead of placeholder single-letter initials
 const industries = [
-  { icon: 'Home', title: 'Home Services', list: 'Roofing, HVAC, Plumbing, Electricians, Landscaping, Cleaning, Restoration, Pest Control, Moving, General Contractors' },
-  { icon: 'Scale', title: 'Legal', list: 'Personal Injury, Family Law, Criminal Defense, Immigration, Estate Planning, Local Law Firms' },
-  { icon: 'HeartPulse', title: 'Healthcare', list: 'Med Spas, Chiropractors, Urgent Care, Physical Therapy, Dermatology, Primary Care, Private Clinics, Wellness' },
-  { icon: 'BedDouble', title: 'Hospitality', list: 'Hotels, Boutique Hotels, Vacation Rentals' },
+  { Icon: HomeIcon,   title: 'Home Services', list: 'Roofing, HVAC, Plumbing, Electricians, Landscaping, Cleaning, Restoration, Pest Control, Moving, General Contractors' },
+  { Icon: Scale,      title: 'Legal',         list: 'Personal Injury, Family Law, Criminal Defense, Immigration, Estate Planning, Local Law Firms' },
+  { Icon: HeartPulse, title: 'Healthcare',    list: 'Med Spas, Chiropractors, Urgent Care, Physical Therapy, Dermatology, Primary Care, Private Clinics, Wellness' },
+  { Icon: BedDouble,  title: 'Hospitality',   list: 'Hotels, Boutique Hotels, Vacation Rentals' },
 ];
 
 export default function Home() {
   return (
     <div>
-      {/* Section 1 — Hero */}
+      {/* Section 1 — Hero (motion starts visible to prevent blank flash) */}
       <section className="bg-white py-16 md:py-24">
         <div className="container-site">
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="flex-1 max-w-xl">
               <motion.p
                 className="text-xs font-medium uppercase tracking-[0.1em] text-muted-text mb-4"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 1, y: 0 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
               >
                 Lead Systems for Local Businesses
               </motion.p>
               <motion.h1
                 className="text-4xl md:text-5xl font-bold text-gunmetal tracking-tight"
                 style={{ lineHeight: 1.1 }}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 1, y: 0 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
               >
                 Websites and lead systems for local businesses that need more calls.
               </motion.h1>
               <motion.p
                 className="mt-4 text-base text-secondary-text max-w-md"
                 style={{ lineHeight: 1.6 }}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 1, y: 0 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
               >
                 We build websites, recover missed leads, improve reviews, and help local businesses generate more inbound leads.
               </motion.p>
               <motion.div
                 className="mt-8 flex flex-wrap gap-4"
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 1, y: 0 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
               >
                 <Link
                   to="/contact"
@@ -101,17 +129,16 @@ export default function Home() {
                   Get Free Audit
                 </Link>
                 <Link
-                  to="/packages"
+                  to="/portfolio"
                   className="inline-flex items-center justify-center px-7 py-3.5 bg-white text-gunmetal text-sm font-semibold rounded-button border border-borders hover:border-teal hover:text-teal transition-all duration-200"
                 >
-                  View Packages
+                  See Our Work
                 </Link>
               </motion.div>
               <motion.div
                 className="mt-10 flex items-center gap-3"
-                initial={{ opacity: 0 }}
+                initial={{ opacity: 1 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.4, delay: 0.55 }}
               >
                 <div className="flex -space-x-1">
                   {[1, 2, 3, 4].map((i) => (
@@ -127,9 +154,8 @@ export default function Home() {
             </div>
             <motion.div
               className="flex-1 max-w-lg w-full"
-              initial={{ opacity: 0, x: 30 }}
+              initial={{ opacity: 1, x: 0 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
             >
               <img
                 src="/images/hero-mockup.png"
@@ -141,14 +167,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section 2 — Problem Section */}
+      {/* Section 2 — Problem */}
       <section className="bg-soft-section py-20 md:py-24">
         <div className="container-site">
           <div className="text-center mb-12">
             <ScrollReveal>
-              <p className="text-xs font-medium uppercase tracking-[0.1em] text-teal mb-3">
-                The Real Problem
-              </p>
+              <p className="text-xs font-medium uppercase tracking-[0.1em] text-teal mb-3">The Real Problem</p>
               <h2 className="text-3xl md:text-4xl font-bold text-gunmetal tracking-tight" style={{ lineHeight: 1.15 }}>
                 You do not have a lead problem.
               </h2>
@@ -175,7 +199,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section 3 — Services Preview */}
+      {/* Section 3 — Services preview */}
       <section className="bg-white py-20 md:py-24">
         <div className="container-site">
           <SectionHeader
@@ -207,40 +231,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section 4 — Package Preview */}
+      {/* Section 4 — Packages preview (3 tiers, matches canonical Services page) */}
       <section className="bg-soft-section py-20 md:py-24">
         <div className="container-site">
           <SectionHeader
             eyebrow="Packages"
             headline="A plan for every stage of growth."
             subtext="Start small or go all-in. Every package includes what matters most."
-            centered={false}
           />
 
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" stagger={0.1}>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto" stagger={0.1}>
             {packages.map((pkg) => (
               <StaggerItem key={pkg.title}>
-                <div className={`bg-white rounded-card p-8 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 ${pkg.featured ? 'ring-2 ring-teal' : ''}`}>
+                <div className={`bg-white rounded-card p-8 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 flex flex-col h-full ${pkg.featured ? 'ring-2 ring-teal' : ''}`}>
                   {pkg.featured && (
-                    <span className="inline-block px-3 py-1 bg-teal text-white text-xs font-medium rounded-small mb-3">
+                    <span className="inline-block self-start px-3 py-1 bg-teal text-white text-xs font-medium rounded-small mb-3">
                       Most Popular
                     </span>
                   )}
-                  <h3 className="text-2xl font-bold text-gunmetal mb-2">{pkg.title}</h3>
+                  <h3 className="text-2xl font-bold text-gunmetal mb-1">{pkg.title}</h3>
+                  <p className="text-sm text-muted-text mb-3">{pkg.tagline}</p>
                   <p className="text-3xl font-bold text-gunmetal tracking-tight mb-4">{pkg.price}</p>
-                  <div className="border-t border-borders pt-4">
-                    {pkg.features.length > 0 ? (
-                      <ul className="space-y-2">
-                        {pkg.features.map((f) => (
-                          <li key={f} className="flex items-center gap-2 text-sm text-secondary-text">
-                            <Check className="w-4 h-4 text-teal flex-shrink-0" />
-                            {f}
-                          </li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <p className="text-sm text-muted-text">One-time website build</p>
-                    )}
+                  <div className="border-t border-borders pt-4 flex-grow">
+                    <ul className="space-y-2">
+                      {pkg.features.map((f) => (
+                        <li key={f} className="flex items-center gap-2 text-sm text-secondary-text">
+                          <Check className="w-4 h-4 text-teal flex-shrink-0" />
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                   <Link
                     to="/contact"
@@ -257,18 +277,22 @@ export default function Home() {
             ))}
           </StaggerContainer>
 
-          <div className="text-center mt-10">
+          <p className="text-center text-sm text-muted-text mt-8">
+            Need a website first? Add <span className="font-semibold text-gunmetal">Website Launch</span> ($250–750 one-time) to any plan.
+          </p>
+
+          <div className="text-center mt-6">
             <Link
-              to="/packages"
+              to="/services"
               className="inline-flex items-center justify-center px-6 py-3 border border-teal text-teal text-sm font-semibold rounded-button hover:bg-teal hover:text-white transition-all duration-200"
             >
-              View Packages
+              View Packages + Services
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Section 5 — Client Growth Path */}
+      {/* Section 5 — How it works */}
       <section className="bg-white py-20 md:py-24">
         <div className="container-site">
           <SectionHeader
@@ -341,7 +365,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section 7 — Industries */}
+      {/* Section 7 — Industries (real Lucide icons, not placeholder initials) */}
       <section className="bg-white py-20 md:py-24">
         <div className="container-site">
           <SectionHeader
@@ -350,17 +374,20 @@ export default function Home() {
           />
 
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-6" stagger={0.1}>
-            {industries.map((ind) => (
-              <StaggerItem key={ind.title}>
-                <div className="bg-teal-light rounded-card p-8 hover:-translate-y-1 transition-all duration-300">
-                  <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center mb-4">
-                    <span className="text-teal font-bold text-sm">{ind.icon.charAt(0)}</span>
+            {industries.map((ind) => {
+              const Icon = ind.Icon;
+              return (
+                <StaggerItem key={ind.title}>
+                  <div className="bg-teal-light rounded-card p-8 hover:-translate-y-1 transition-all duration-300">
+                    <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center mb-4">
+                      <Icon className="w-5 h-5 text-teal" strokeWidth={2} />
+                    </div>
+                    <h3 className="text-xl font-semibold text-gunmetal mb-3">{ind.title}</h3>
+                    <p className="text-sm text-secondary-text" style={{ lineHeight: 1.8 }}>{ind.list}</p>
                   </div>
-                  <h3 className="text-xl font-semibold text-gunmetal mb-3">{ind.title}</h3>
-                  <p className="text-sm text-secondary-text" style={{ lineHeight: 1.8 }}>{ind.list}</p>
-                </div>
-              </StaggerItem>
-            ))}
+                </StaggerItem>
+              );
+            })}
           </StaggerContainer>
         </div>
       </section>

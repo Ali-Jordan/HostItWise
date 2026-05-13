@@ -5,6 +5,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        sans: ['Satoshi', 'Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+        satoshi: ['Satoshi', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
       },
       colors: {
@@ -84,23 +86,14 @@ module.exports = {
         'nav': '0 1px 3px rgba(14,30,32,0.08)',
       },
       keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-        "caret-blink": {
-          "0%,70%,100%": { opacity: "1" },
-          "20%,50%": { opacity: "0" },
-        },
+        "accordion-down": { from: { height: "0" }, to: { height: "var(--radix-accordion-content-height)" } },
+        "accordion-up":   { from: { height: "var(--radix-accordion-content-height)" }, to: { height: "0" } },
+        "caret-blink":    { "0%,70%,100%": { opacity: "1" }, "20%,50%": { opacity: "0" } },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        "caret-blink": "caret-blink 1.25s ease-out infinite",
+        "accordion-up":   "accordion-up 0.2s ease-out",
+        "caret-blink":    "caret-blink 1.25s ease-out infinite",
       },
     },
   },
