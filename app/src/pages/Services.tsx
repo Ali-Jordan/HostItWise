@@ -8,6 +8,8 @@ import {
   TrendingUp,
   MessageSquare,
   Camera,
+  Palette,
+  Headphones,
   Check,
 } from 'lucide-react';
 
@@ -86,6 +88,14 @@ const services = [
   {
     number: '08', icon: Camera, name: 'Content Day', price: '$300–800 one-time', addon: true,
     description: 'One full content day with a local professional photographer. Photos, video b-roll, headshots, team shots — everything you need to keep your site and socials fed for a year.',
+  },
+  {
+    number: '09', icon: Palette, name: 'Branding from Zero', price: '$500–2,000 one-time', addon: false,
+    description: 'Logo design, color system, typography, and brand guidelines built from scratch. For new businesses launching, or established ones ready for a refresh. Includes business card and social template designs at higher tiers.',
+  },
+  {
+    number: '10', icon: Headphones, name: 'Live Reception + Booking', price: '$199 setup + $99–249/mo', addon: true,
+    description: 'Live receptionists (via our Smith.ai partnership) answer your calls 24/7 and book appointments straight into your calendar. We set up the script, integrate everything, and optimize monthly. Never miss a lead because no one was there to answer.',
   },
 ];
 

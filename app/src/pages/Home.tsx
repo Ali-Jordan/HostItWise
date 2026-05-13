@@ -15,6 +15,8 @@ import {
   Car,
   Wrench,
   Scissors,
+  Palette,
+  Headphones,
 } from 'lucide-react';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { StaggerContainer, StaggerItem } from '@/components/Stagger';
@@ -39,6 +41,8 @@ const services = [
   { num: '06', name: 'Google Ads Management',  price: '$300–750/mo + ad spend' },
   { num: '07', name: 'Follow-Up Engine',       price: '$99–299/mo' },
   { num: '08', name: 'Content Day',            price: '$300–800 one-time' },
+  { num: '09', name: 'Branding from Zero',     price: '$500–2,000 one-time' },
+  { num: '10', name: 'Live Reception + Booking', price: '$199 setup + $99–249/mo' },
 ];
 
 // Hosting now in Starter; Monthly reporting now in Growth.
